@@ -1,0 +1,48 @@
+$colorWhite: #ffffff;
+$colorBlack: #18171f;
+$inputBlack: #1e1c24;
+$borderColor: #36343e;
+$colorPrimary: #02122ded;
+$colorBlue: #1976d2;
+$text-color: #a1a0a5;
+$search-color: #f6f6f6;
+$box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+@mixin image($width, $height, $fit, $color1, $color2) {
+  .logo {
+    width: $width;
+    height: $height;
+    display: inline-block;
+    $border: 2px;
+    position: relative;
+    color: #fff;
+    z-index: 10;
+
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+    border-radius: 50%;
+    padding: 2px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      padding: 10px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(315deg, $color1, $color2);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: $fit;
+      background-color: #fff;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../styles/global/global.scss";
+.sidebar-container {
+  width: 0px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1000;
+  //   height: 100vh;
+  overflow-y: scroll;
+  background-color: $colorBlack;
+  transition: width 0.2s ease-in-out;
+
+  &.active {
+    width: 70%;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    &.active {
+      width: 0;
+    }
+  }
+}

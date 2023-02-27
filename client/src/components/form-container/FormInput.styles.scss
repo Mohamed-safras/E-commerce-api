@@ -1,0 +1,80 @@
+@import "../../styles/global/global.scss";
+$sub-color: rgb(192, 191, 191);
+$main-color: black;
+
+@mixin shrinkLabel {
+  top: -10px;
+  left: 12px;
+  font-size: 14px;
+  color: $text-color;
+  background: $colorBlack;
+  padding: 0 5px;
+
+  @media screen and (max-width: 300px) {
+    font-size: 12px;
+  }
+}
+
+.group {
+  position: relative;
+
+  .form-input {
+    background: none;
+    background-color: $inputBlack;
+    color: $text-color;
+    font-size: 14px;
+    height: 45px;
+    padding: 10px 35px 10px 10px;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid $borderColor;
+    margin-bottom: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    }
+  }
+
+  input[type="password"] {
+    letter-spacing: 0.2em;
+  }
+
+  .form-input-label {
+    color: $text-color;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+
+    left: 12px;
+    top: 10px;
+    transition: 300ms ease all;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+  .icon {
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 12px;
+    transition: 300ms ease all;
+  }
+  @media screen and (max-width: 300px) {
+    .form-input {
+      height: 35px;
+      margin: 12px 0;
+    }
+
+    .form-input-label {
+      top: 7px;
+    }
+  }
+}
