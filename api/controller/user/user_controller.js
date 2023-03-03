@@ -17,6 +17,7 @@ const createUser = asyncHandler(async (req, res) => {
     address,
     location,
     avatar,
+    role,
   } = req.body;
 
   try {
@@ -38,6 +39,7 @@ const createUser = asyncHandler(async (req, res) => {
         avatar,
         address,
         location,
+        role,
       });
 
       if (!req.file) {
@@ -55,6 +57,7 @@ const createUser = asyncHandler(async (req, res) => {
         lastName,
         avatar: saveUser.avatar,
         token,
+        role,
       });
     } else {
       throw new Error("User already exists");
@@ -98,6 +101,7 @@ const signin = asyncHandler(async (req, res) => {
       const token = createToken(_id);
 
       res.status(200).json({
+        _id,
         email,
         username,
         firstName,
@@ -113,8 +117,27 @@ const signin = asyncHandler(async (req, res) => {
   }
 });
 
+const updateUser = async (req, res) => {
+  const id = req.query.id;
+  try {
+    const body = req.body;
+    if (!id) {
+      throw new Error(`Invalid user ${req.query.id}`);
+    }
+
+    await User.findOneAndUpdate({ _id: id }, body).then(() => {
+      res.status(200).json({ message: "user updated successfully" });
+    });
+  } catch (error) {
+    res.status(404).json({ error: error });
+  }
+};
+
+let getAllUsers;
+
 module.exports = {
   createUser,
   signin,
   createToken,
+  updateUser,
 };

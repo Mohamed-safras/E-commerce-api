@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/images", express.static("images"));
 
-app.use("/api/v1/", router);
+app.use("/api/v1/user", router);
 
 app.use(notFound);
 app.use(errorHandler);
@@ -51,5 +51,3 @@ dbConnect()
   });
 
 /*--------------DB CONNECTION----------*/
-
-// console.logvalidation("awsafras@gmail.com", emailValid);

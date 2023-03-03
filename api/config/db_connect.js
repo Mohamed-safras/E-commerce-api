@@ -8,7 +8,7 @@ const dbConnect = async () => {
       useUnifiedTopology: true,
     },
     () => {
-      console.log("Database connection is successfully established");
+      console.log(`Database connection is successfully established`);
     }
   );
 };

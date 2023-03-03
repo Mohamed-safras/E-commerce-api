@@ -93,7 +93,7 @@ const SignUp = () => {
       formData.append("address", address);
 
       const res = await axios.post(
-        "http://localhost:8080/api/v1/register",
+        "http://localhost:8080/api/v1/user/register",
         formData,
         {
           headers: {

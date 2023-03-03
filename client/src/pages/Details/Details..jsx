@@ -24,7 +24,7 @@ const Details = () => {
   const { addToCart } = useContext(CartContext);
   const { categories } = useContext(CategoriesContext);
   const param = useLocation().pathname.split("/").pop();
-  console.log(useLocation().pathname);
+
   const [category, id] = param.split("-");
 
   const addToProductCart = () => {

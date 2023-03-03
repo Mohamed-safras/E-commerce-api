@@ -20,7 +20,7 @@ const useSignIn = (email, password) => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:8080/api/v1/signin",
+        "http://localhost:8080/api/v1/user/signin",
         {
           email,
           password,
